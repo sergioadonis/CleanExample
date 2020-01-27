@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\CleanExample.Products.Entities\CleanExample.Products.Entities.csproj" />
+    <ProjectReference Include="..\CleanExample.Common.UseCases\CleanExample.Common.UseCases.csproj" />
+    <ProjectReference Include="..\CleanExample.Products.Interfaces\CleanExample.Products.Interfaces.csproj" />
+    <ProjectReference Include="..\CleanExample.Common.Interfaces\CleanExample.Common.Interfaces.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+</Project>
