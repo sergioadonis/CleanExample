@@ -6,15 +6,8 @@ namespace CleanExample.ConsoleApp.Loggers
 {
     public class ConsoleLogger : ILogger
     {
-        string traceId;
-
-        public ConsoleLogger() { }
-
-        public ConsoleLogger(string traceId)
-        {
-            this.traceId = traceId;
-        }
-
+        public string Trace { get; set; }
+        
         public void Debug(string message, object data = null)
         {
             WriteText(message, data, LogType.DEBUG);
@@ -42,7 +35,7 @@ namespace CleanExample.ConsoleApp.Loggers
 
         private void WriteText(string message, object data = null, LogType type = LogType.INFO)
         {
-            var trace = string.IsNullOrEmpty(this.traceId) ? "" : " [" + this.traceId + "]";
+            var trace = string.IsNullOrEmpty(this.Trace) ? "" : " [" + this.Trace + "]";
             var text = DateTime.Now.ToString() + trace;
             text = text + " " + type;
             text = text + " " + message;

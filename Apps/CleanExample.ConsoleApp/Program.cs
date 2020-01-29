@@ -1,9 +1,8 @@
-using CleanExample.Common.Interfaces.Time;
-using CleanExample.ConsoleApp.Loggers;
-using CleanExample.ConsoleApp.Repositories;
 using CleanExample.Products.Entities;
 using CleanExample.Products.UseCases.CreateProduct;
 using CleanExample.Products.UseCases.CreateProduct.Models;
+using CleanExample.Products.UseCases.Repositories;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace CleanExample.ConsoleApp
 {
@@ -11,28 +10,42 @@ namespace CleanExample.ConsoleApp
     {
         static void Main(string[] args)
         {
-            // Console.WriteLine("Hello World!");
-            var product = new Product()
+            // IoC Container
+            using (var scope = SingletonFactory.CreateScope())
             {
-                Name = "Hola",
-                Id = "0"
-            };
-            
-            var repository = new DefaultProductRepository();
-            var logger = new ConsoleLogger("123456-789");
-            var time = new CurrentTime();
-            var createProduct = new UseCase(repository, time, logger);
+                var product = new Product()
+                {
+                    Name = "Hola",
+                    Id = "0"
+                };                
 
-            var result = createProduct.Use(new InputModel()
+                var createProduct = scope.ServiceProvider.GetService<UseCase>();
+                var result = createProduct.Use(new InputModel()
+                {
+                    Product = product,
+                    Trace = "123456-789"
+                });
+            }
+            
+            var use = SingletonFactory.GetService<UseCase>();
+            var created = use.Use(new InputModel()
             {
-                Product = product
+                Product = new Product()
+                {
+                    Name = "Nuevo",
+                    Description = "lakmsl"
+                }
             });
 
-            logger.Info("result: ", result);
-            repository.Delete(result.Product.Id);
-            logger.Info("List: ", repository.FindAll());
+            var logger = SingletonFactory.GetService<Common.Interfaces.Loggers.ILogger>();
+            logger.Info("created", created);
 
-            System.Console.ReadLine();
+            using (var scope = SingletonFactory.CreateScope())
+            {
+                var reposiotory = scope.ServiceProvider.GetService<IProductRepository>();
+                var list = reposiotory.FindAll();
+                System.Console.ReadLine();
+            }
         }
     }
 }

@@ -2,6 +2,8 @@ namespace CleanExample.Common.Interfaces.Loggers
 {
     public interface ILogger
     {
+        string Trace { get; set; }
+
         /* Log a message and data object */
         void Debug(string message, object data = null); // Solo para tiempo de desarrollo
 
