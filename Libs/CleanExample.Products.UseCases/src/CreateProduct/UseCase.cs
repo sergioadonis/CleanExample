@@ -26,7 +26,7 @@ namespace CleanExample.Products.UseCases.CreateProduct
         public OutputModel Use(InputModel input)
         {
             logger.Info("Starting CreateProduct use case");
-            logger.Debug("Input model received: " + input);
+            logger.Debug("Input model received: ", input);
 
             // Business rules example
             // -----------------------------------------------------------------

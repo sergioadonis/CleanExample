@@ -1,5 +1,5 @@
-using CleanExample.Common.Interfaces.Loggers;
 using CleanExample.Common.Interfaces.Time;
+using CleanExample.ConsoleAp.Loggers;
 using CleanExample.Products.Entities;
 using CleanExample.Products.Interfaces.Repositories;
 using CleanExample.Products.UseCases.CreateProduct;
@@ -32,11 +32,13 @@ namespace CleanExample.ConsoleApp
                 Product = product
             });
 
-            logger.Info("result: " + result);
+            logger.Info("result: ", result);
 
-            repository.Delete(result.Product.Id);
+            //repository.Delete(result.Product.Id);
 
-            logger.Info(repository.FindAll());
+            logger.Info("List: ", repository.FindAll());
+
+            System.Console.ReadLine();
         }
     }
 }
