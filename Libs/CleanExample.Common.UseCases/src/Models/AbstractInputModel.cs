@@ -1,6 +1,6 @@
 namespace CleanExample.Common.UseCases.Models
 {
-    public abstract class BaseInputModel : IModel
+    public abstract class AbstractInputModel
     {
         public string UserName { get; set; }
 

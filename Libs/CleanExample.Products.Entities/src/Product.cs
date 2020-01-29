@@ -2,7 +2,7 @@
 
 namespace CleanExample.Products.Entities
 {
-    public class Product : BaseEntity
+    public class Product : AbstractEntity
     {
         public string Name { get; set; }
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace CleanExample.Common.Interfaces.Repositories
 {
-    public interface IRepository<TEntity> where TEntity : IEntity
+    public interface IRepository<TEntity> where TEntity : AbstractEntity
     {
         IEnumerable<TEntity> FindAll();
 

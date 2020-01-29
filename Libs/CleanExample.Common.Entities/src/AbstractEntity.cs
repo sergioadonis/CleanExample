@@ -2,7 +2,7 @@ using System;
 
 namespace CleanExample.Common.Entities
 {
-    public abstract class BaseEntity : IEntity
+    public abstract class AbstractEntity
     {
         public string Id;
 

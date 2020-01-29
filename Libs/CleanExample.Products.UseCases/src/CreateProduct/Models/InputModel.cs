@@ -3,7 +3,7 @@ using CleanExample.Products.Entities;
 
 namespace CleanExample.Products.UseCases.CreateProduct.Models
 {
-    public class InputModel : BaseInputModel
+    public class InputModel : AbstractInputModel
     {
         public Product Product { get; set; }
     }
