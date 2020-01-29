@@ -1,4 +1,3 @@
-using System;
 using CleanExample.Common.UseCases.Models;
 
 namespace CleanExample.Common.UseCases

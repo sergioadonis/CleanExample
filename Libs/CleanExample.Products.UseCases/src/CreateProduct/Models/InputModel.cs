@@ -1,6 +1,5 @@
-using System;
-using CleanExample.Products.Entities;
 using CleanExample.Common.UseCases.Models;
+using CleanExample.Products.Entities;
 
 namespace CleanExample.Products.UseCases.CreateProduct.Models
 {

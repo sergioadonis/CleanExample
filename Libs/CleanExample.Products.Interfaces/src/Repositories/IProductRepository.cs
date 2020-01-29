@@ -1,4 +1,3 @@
-using System;
 using CleanExample.Common.Interfaces.Repositories;
 using CleanExample.Products.Entities;
 
