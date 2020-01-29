@@ -19,10 +19,8 @@ namespace CleanExample.ConsoleApp
                 Name = "Hola",
                 Id = "0"
             };
-
-            var store = new List<Product>().AsQueryable();
-
-            var repository = new DefaultProductRepository(store);
+            
+            var repository = new DefaultProductRepository();
             var logger = new ConsoleLogger("123456-789");
             var time = new CurrentTime();
             var createProduct = new UseCase(repository, time, logger);
@@ -33,9 +31,7 @@ namespace CleanExample.ConsoleApp
             });
 
             logger.Info("result: ", result);
-
-            //repository.Delete(result.Product.Id);
-
+            repository.Delete(result.Product.Id);
             logger.Info("List: ", repository.FindAll());
 
             System.Console.ReadLine();
