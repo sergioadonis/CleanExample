@@ -2,7 +2,7 @@ using CleanExample.Common.Interfaces.Loggers;
 using Newtonsoft.Json;
 using System;
 
-namespace CleanExample.ConsoleAp.Loggers
+namespace CleanExample.ConsoleApp.Loggers
 {
     public class ConsoleLogger : ILogger
     {

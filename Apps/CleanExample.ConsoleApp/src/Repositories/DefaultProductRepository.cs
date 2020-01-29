@@ -1,8 +1,9 @@
 ﻿using CleanExample.Products.Entities;
+using CleanExample.Products.UseCases.Repositories;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace CleanExample.Products.Interfaces.Repositories
+namespace CleanExample.ConsoleApp.Repositories
 {
     public class DefaultProductRepository : IProductRepository
     {

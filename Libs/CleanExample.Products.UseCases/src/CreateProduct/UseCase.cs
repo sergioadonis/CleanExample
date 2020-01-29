@@ -3,8 +3,8 @@ using CleanExample.Common.Interfaces.Time;
 using CleanExample.Common.UseCases;
 using CleanExample.Common.UseCases.Models;
 using CleanExample.Products.Entities;
-using CleanExample.Products.Interfaces.Repositories;
 using CleanExample.Products.UseCases.CreateProduct.Models;
+using CleanExample.Products.UseCases.Repositories;
 using System;
 
 namespace CleanExample.Products.UseCases.CreateProduct

@@ -1,11 +1,9 @@
 using CleanExample.Common.Interfaces.Time;
-using CleanExample.ConsoleAp.Loggers;
+using CleanExample.ConsoleApp.Loggers;
+using CleanExample.ConsoleApp.Repositories;
 using CleanExample.Products.Entities;
-using CleanExample.Products.Interfaces.Repositories;
 using CleanExample.Products.UseCases.CreateProduct;
 using CleanExample.Products.UseCases.CreateProduct.Models;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace CleanExample.ConsoleApp
 {
