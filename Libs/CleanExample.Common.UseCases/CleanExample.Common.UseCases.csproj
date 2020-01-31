@@ -4,4 +4,9 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CleanExample.Common.Entities\CleanExample.Common.Entities.csproj" />
+    <ProjectReference Include="..\CleanExample.Common.Interfaces\CleanExample.Common.Interfaces.csproj" />
+  </ItemGroup>
+
 </Project>

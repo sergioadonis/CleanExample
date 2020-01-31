@@ -1,8 +1,8 @@
 using CleanExample.Products.Entities;
 using CleanExample.Products.UseCases.CreateProduct;
 using CleanExample.Products.UseCases.CreateProduct.Models;
-using CleanExample.Products.UseCases.Repositories;
 using Microsoft.Extensions.DependencyInjection;
+using System;
 
 namespace CleanExample.ConsoleApp
 {
@@ -10,42 +10,48 @@ namespace CleanExample.ConsoleApp
     {
         static void Main(string[] args)
         {
-            // IoC Container
-            using (var scope = SingletonFactory.CreateScope())
+            try
             {
-                var product = new Product()
+                // IoC Container
+                using (var scope = SingletonFactory.CreateScope())
                 {
-                    Name = "Hola",
-                    Id = "0"
-                };                
+                    var product = new Product()
+                    {
+                        Name = "Hola",
+                        Id = "0"
+                    };
 
-                var createProduct = scope.ServiceProvider.GetService<UseCase>();
-                var result = createProduct.Use(new InputModel()
-                {
-                    Product = product,
-                    Trace = "123456-789"
-                });
-            }
-            
-            var use = SingletonFactory.GetService<UseCase>();
-            var created = use.Use(new InputModel()
-            {
-                Product = new Product()
-                {
-                    Name = "Nuevo",
-                    Description = "lakmsl"
+                    var createProduct = scope.ServiceProvider.GetService<UseCase>();
+                    var result = createProduct.Use(new InputModel()
+                    {
+                        Product = product,
+                        User = "sergioadonis"
+                    });
+
+                    var createProduct2 = scope.ServiceProvider.GetService<UseCase>();
+                    var result2 = createProduct.Use(new InputModel()
+                    {
+                        Product = new Product()
+                        {
+                            Name = "Hola22222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222",
+                            Id = "0"
+                        }
+                    });
                 }
-            });
-
-            var logger = SingletonFactory.GetService<Common.Interfaces.Loggers.ILogger>();
-            logger.Info("created", created);
-
-            using (var scope = SingletonFactory.CreateScope())
-            {
-                var reposiotory = scope.ServiceProvider.GetService<IProductRepository>();
-                var list = reposiotory.FindAll();
-                System.Console.ReadLine();
             }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+
+            }
+
+
+            Console.ReadLine();
+
+
         }
     }
 }
