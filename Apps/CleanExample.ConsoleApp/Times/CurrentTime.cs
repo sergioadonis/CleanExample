@@ -1,6 +1,7 @@
+using CleanExample.Common.Services.Time;
 using System;
 
-namespace CleanExample.Common.Interfaces.Time
+namespace CleanExample.ConsoleApp.Time
 {
     public class CurrentTime : ITime
     {

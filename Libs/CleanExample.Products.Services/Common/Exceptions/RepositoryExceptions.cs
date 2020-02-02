@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CleanExample.Products.UseCases.Common.Exceptions
+namespace CleanExample.Products.Services.Common.Exceptions
 {
     public class ProductRepositoryCreateException : Exception
     {

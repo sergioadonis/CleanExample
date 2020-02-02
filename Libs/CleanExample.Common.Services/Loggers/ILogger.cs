@@ -1,9 +1,9 @@
-namespace CleanExample.Common.Interfaces.Loggers
+namespace CleanExample.Common.Services.Loggers
 {
     public interface ILogger
     {
         /* Log a message and data object */
-        void Log(string message, object data = null, LogType type = LogType.INFO); 
+        void Log(string message, object data = null, LogType type = LogType.INFO);
     }
 
     public enum LogType

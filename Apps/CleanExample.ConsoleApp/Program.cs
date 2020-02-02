@@ -1,6 +1,6 @@
 using CleanExample.Products.Entities;
-using CleanExample.Products.UseCases.CreateProduct;
-using CleanExample.Products.UseCases.CreateProduct.Models;
+using CleanExample.Products.Services.CreateProduct.Models;
+using CleanExample.Products.Services.CreateProduct;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 
@@ -41,7 +41,7 @@ namespace CleanExample.ConsoleApp
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex);
             }
             finally
             {

@@ -1,4 +1,4 @@
-using CleanExample.Common.Interfaces.Loggers;
+using CleanExample.Common.Services.Loggers;
 using Newtonsoft.Json;
 using System;
 

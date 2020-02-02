@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CleanExample.Products.UseCases.CreateProduct.Exceptions
+namespace CleanExample.Products.Services.Common.Exceptions
 {
     public class ProductNameIsEmptyException : Exception
     {

@@ -1,5 +1,5 @@
 ﻿using CleanExample.Products.Entities;
-using CleanExample.Products.UseCases.Repositories;
+using CleanExample.Products.Services.Common.Repositories;
 using System.Collections.Generic;
 using System.Linq;
 

@@ -1,17 +1,16 @@
-using CleanExample.Common.Interfaces.Loggers;
-using CleanExample.Common.Interfaces.Time;
-using CleanExample.Common.UseCases;
-using CleanExample.Common.UseCases.Models;
+using CleanExample.Common.Services.Loggers;
+using CleanExample.Common.Services.Models;
+using CleanExample.Common.Services.Time;
+using CleanExample.Common.Services.UseCases;
 using CleanExample.Products.Entities;
-using CleanExample.Products.UseCases.Common.Exceptions;
-using CleanExample.Products.UseCases.CreateProduct.Exceptions;
-using CleanExample.Products.UseCases.CreateProduct.Models;
-using CleanExample.Products.UseCases.Repositories;
+using CleanExample.Products.Services.Common.Exceptions;
+using CleanExample.Products.Services.Common.Repositories;
+using CleanExample.Products.Services.CreateProduct.Models;
 using System;
 
-namespace CleanExample.Products.UseCases.CreateProduct
+namespace CleanExample.Products.Services.CreateProduct
 {
-    public class UseCase : AbstractUseCase<InputModel, OutputModel>
+    public class UseCase : IUseCase<InputModel, OutputModel>
     {
         // Injectables
         private readonly IProductRepository _repository;
@@ -26,13 +25,13 @@ namespace CleanExample.Products.UseCases.CreateProduct
         }
 
         // TODO: Imprimir input y output en la clase base de UseCase
-        public override OutputModel Use(InputModel input)
+        public OutputModel Use(InputModel input)
         {
             // To return
             var output = new OutputModel();
             try
             {
-                _logger.Log("Starting CreateProduct use case");
+                _logger.Log("Starting CreateProduct.UseCase");
                 _logger.Log("Input model received: ", input, LogType.DEBUG);
 
                 #region Business rules example
@@ -84,10 +83,10 @@ namespace CleanExample.Products.UseCases.CreateProduct
             }
             catch (Exception e)
             {
-                var message = $"An error occurred while executing CreateProduct use case... ";
+                var message = $"An error occurred while executing a service... {GetType().FullName}";
                 var data = new
                 {
-                    useCase = GetType().ToString(),
+                    service = GetType().FullName,
                     input,
                     output,
                     exception = e

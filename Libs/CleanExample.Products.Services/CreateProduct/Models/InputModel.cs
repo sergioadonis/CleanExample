@@ -1,7 +1,7 @@
-using CleanExample.Common.UseCases.Models;
+using CleanExample.Common.Services.Models;
 using CleanExample.Products.Entities;
 
-namespace CleanExample.Products.UseCases.CreateProduct.Models
+namespace CleanExample.Products.Services.CreateProduct.Models
 {
     public class InputModel : AbstractInputModel
     {

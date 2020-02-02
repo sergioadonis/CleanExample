@@ -16,10 +16,10 @@ namespace CleanExample.ConsoleApp
                 {
                     serviceCollection = new ServiceCollection();
 
-                    serviceCollection.AddScoped<Common.Interfaces.Time.ITime, Common.Interfaces.Time.CurrentTime>();
-                    serviceCollection.AddScoped<Common.Interfaces.Loggers.ILogger, Loggers.ConsoleLogger>();
-                    serviceCollection.AddScoped<Products.UseCases.Repositories.IProductRepository, Repositories.DefaultProductRepository>();
-                    serviceCollection.AddScoped<Products.UseCases.CreateProduct.UseCase>();
+                    serviceCollection.AddScoped<Common.Services.Time.ITime, Time.CurrentTime>();
+                    serviceCollection.AddScoped<Common.Services.Loggers.ILogger, Loggers.ConsoleLogger>();
+                    serviceCollection.AddScoped<Products.Services.Common.Repositories.IProductRepository, Repositories.DefaultProductRepository>();
+                    serviceCollection.AddScoped<Products.Services.CreateProduct.UseCase>();
                 }
 
                 return serviceCollection;

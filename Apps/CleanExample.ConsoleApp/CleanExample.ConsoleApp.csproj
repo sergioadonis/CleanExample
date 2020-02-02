@@ -1,7 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Libs\CleanExample.Products.UseCases\CleanExample.Products.UseCases.csproj" />
+    <ProjectReference Include="..\..\Libs\CleanExample.Products.Services\CleanExample.Products.Services.csproj" />
+    <ProjectReference Include="..\..\Libs\CleanExample.Common.Services\CleanExample.Common.Services.csproj" />
   </ItemGroup>
 
   <ItemGroup>

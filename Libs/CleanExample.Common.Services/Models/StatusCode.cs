@@ -1,4 +1,4 @@
-namespace CleanExample.Common.UseCases.Models
+namespace CleanExample.Common.Services.Models
 {
     public enum StatusCode
     {
