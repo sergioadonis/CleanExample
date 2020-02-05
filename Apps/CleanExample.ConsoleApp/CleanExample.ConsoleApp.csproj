@@ -1,6 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Libs\CleanExample.Common.Services.Mocks\CleanExample.Common.Services.Mocks.csproj" />
+    <ProjectReference Include="..\..\Libs\CleanExample.Products.Services.Mocks\CleanExample.Products.Services.Mocks.csproj" />
     <ProjectReference Include="..\..\Libs\CleanExample.Products.Services\CleanExample.Products.Services.csproj" />
     <ProjectReference Include="..\..\Libs\CleanExample.Common.Services\CleanExample.Common.Services.csproj" />
   </ItemGroup>

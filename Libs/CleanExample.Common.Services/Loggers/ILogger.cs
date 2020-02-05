@@ -14,5 +14,4 @@ namespace CleanExample.Common.Services.Loggers
         ERROR,      // Cuando es un catch
         FATAL       // Cuando es un error muy grave que detiene la operacion
     }
-
 }

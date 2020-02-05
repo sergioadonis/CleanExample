@@ -1,9 +1,9 @@
 using CleanExample.Common.Services.Time;
 using System;
 
-namespace CleanExample.ConsoleApp.Time
+namespace CleanExample.Common.Services.Mocks.Time
 {
-    public class CurrentTime : ITime
+    public class MockTime : ITime
     {
         public DateTime GetCurrentTime()
         {

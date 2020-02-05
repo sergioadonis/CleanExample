@@ -2,13 +2,13 @@ using CleanExample.Common.Services.Loggers;
 using Newtonsoft.Json;
 using System;
 
-namespace CleanExample.ConsoleApp.Loggers
+namespace CleanExample.Common.Services.Mocks.Loggers
 {
-    public class ConsoleLogger : ILogger
+    public class MockLogger : ILogger
     {
         private string _timestamp { get; }
 
-        public ConsoleLogger()
+        public MockLogger()
         {
             _timestamp = DateTime.Now.ToFileTime().ToString(); // DateTime.Now.Ticks.ToString();
         }
@@ -30,4 +30,5 @@ namespace CleanExample.ConsoleApp.Loggers
             WriteText(text);
         }
     }
+
 }

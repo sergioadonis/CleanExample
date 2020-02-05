@@ -1,6 +1,6 @@
 using CleanExample.Products.Entities;
-using CleanExample.Products.Services.CreateProduct.Models;
 using CleanExample.Products.Services.CreateProduct;
+using CleanExample.Products.Services.CreateProduct.Models;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 
@@ -48,10 +48,7 @@ namespace CleanExample.ConsoleApp
 
             }
 
-
             Console.ReadLine();
-
-
         }
     }
 }

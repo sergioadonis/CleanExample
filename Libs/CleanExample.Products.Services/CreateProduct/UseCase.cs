@@ -49,7 +49,7 @@ namespace CleanExample.Products.Services.CreateProduct
                     throw new ProductNameAlreadyExistsException(input.Product.Name);
 
                 var nameLength = input.Product.Name.Length;
-                var max = 30;
+                var max = 50;
                 if (nameLength > max)
                     throw new ProductNameIsTooLongException(input.Product.Name, max);
                 #endregion

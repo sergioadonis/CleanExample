@@ -5,9 +5,10 @@ using CleanExample.Common.Services.Time;
 using CleanExample.Products.Services.Common.Repositories;
 using CleanExample.Products.Services.CreateProduct;
 using CleanExample.Products.Services.Mocks.Repositories;
+using CleanExample.Products.Services.Test.CreateProduct;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace CleanExample.ConsoleApp
+namespace CleanExample.Products.Services.Test
 {
     public static class SingletonFactory
     {
@@ -27,6 +28,8 @@ namespace CleanExample.ConsoleApp
                     serviceCollection.AddScoped<ILogger, MockLogger>();
                     serviceCollection.AddScoped<IProductRepository, ProductMockRepository>();
                     serviceCollection.AddScoped<UseCase>();
+
+                    serviceCollection.AddScoped<UseCaseUnitTest>();
                 }
 
                 return serviceCollection;
