@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CleanExample.Common.Services.Mocks\CleanExample.Common.Services.Mocks.csproj" />
+    <ProjectReference Include="..\CleanExample.Common.MockServices\CleanExample.Common.MockServices.csproj" />
     <ProjectReference Include="..\CleanExample.Products.Services\CleanExample.Products.Services.csproj" />
   </ItemGroup>
 

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace CleanExample.Common.Services.Mocks.Repositories
+namespace CleanExample.Common.MockServices.Repositories
 {
     public abstract class MockRepository<T> where T : AbstractEntity 
     {

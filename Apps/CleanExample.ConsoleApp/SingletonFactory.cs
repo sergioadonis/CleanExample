@@ -1,10 +1,10 @@
-﻿using CleanExample.Common.Services.Loggers;
-using CleanExample.Common.Services.Mocks.Loggers;
-using CleanExample.Common.Services.Mocks.Time;
+﻿using CleanExample.Common.MockServices.Loggers;
+using CleanExample.Common.MockServices.Time;
+using CleanExample.Common.Services.Loggers;
 using CleanExample.Common.Services.Time;
+using CleanExample.Products.MockServices.Common.Repositories;
 using CleanExample.Products.Services.Common.Repositories;
 using CleanExample.Products.Services.CreateProduct;
-using CleanExample.Products.Services.Mocks.Repositories;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace CleanExample.ConsoleApp

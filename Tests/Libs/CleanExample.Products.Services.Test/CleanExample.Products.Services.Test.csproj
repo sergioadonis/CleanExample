@@ -14,8 +14,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Libs\CleanExample.Common.Services.Mocks\CleanExample.Common.Services.Mocks.csproj" />
-    <ProjectReference Include="..\..\..\Libs\CleanExample.Products.Services.Mocks\CleanExample.Products.Services.Mocks.csproj" />
+    <ProjectReference Include="..\..\..\Libs\CleanExample.Common.MockServices\CleanExample.Common.MockServices.csproj" />
+    <ProjectReference Include="..\..\..\Libs\CleanExample.Products.MockServices\CleanExample.Products.MockServices.csproj" />
     <ProjectReference Include="..\..\..\Libs\CleanExample.Products.Services\CleanExample.Products.Services.csproj" />
   </ItemGroup>
 

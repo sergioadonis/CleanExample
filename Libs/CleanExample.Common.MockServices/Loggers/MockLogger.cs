@@ -2,7 +2,7 @@ using CleanExample.Common.Services.Loggers;
 using Newtonsoft.Json;
 using System;
 
-namespace CleanExample.Common.Services.Mocks.Loggers
+namespace CleanExample.Common.MockServices.Loggers
 {
     public class MockLogger : ILogger
     {

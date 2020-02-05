@@ -1,9 +1,9 @@
-﻿using CleanExample.Common.Services.Mocks.Repositories;
+﻿using CleanExample.Common.MockServices.Repositories;
 using CleanExample.Products.Entities;
 using CleanExample.Products.Services.Common.Repositories;
 using System.Linq;
 
-namespace CleanExample.Products.Services.Mocks.Repositories
+namespace CleanExample.Products.MockServices.Common.Repositories
 {
     public class ProductMockRepository : MockRepository<Product>, IProductRepository
     {

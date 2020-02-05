@@ -1,7 +1,7 @@
 using CleanExample.Common.Services.Time;
 using System;
 
-namespace CleanExample.Common.Services.Mocks.Time
+namespace CleanExample.Common.MockServices.Time
 {
     public class MockTime : ITime
     {
