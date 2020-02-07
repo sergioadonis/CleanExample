@@ -77,8 +77,6 @@ namespace CleanExample.Products.Services.CreateProduct
                 var successMessage = $"Product with id {product.Id} was created successfully!";
                 _logger.Log(successMessage, product);
                 output.Product = product;
-                output.Status = StatusCode.Success;
-                output.Message = successMessage;
 
             }
             catch (Exception e)

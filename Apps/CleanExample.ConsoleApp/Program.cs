@@ -24,8 +24,7 @@ namespace CleanExample.ConsoleApp
                     var createProduct = scope.ServiceProvider.GetService<UseCase>();
                     var result = createProduct.Use(new InputModel()
                     {
-                        Product = product,
-                        User = "sergioadonis"
+                        Product = product
                     });
 
                     var createProduct2 = scope.ServiceProvider.GetService<UseCase>();
