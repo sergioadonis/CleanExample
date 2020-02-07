@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\core\CleanExample.Core.Products\CleanExample.Core.Products.csproj" />
+    <ProjectReference Include="..\CleanExample.MockServices.Common\CleanExample.MockServices.Common.csproj" />
+  </ItemGroup>
+
+</Project>
