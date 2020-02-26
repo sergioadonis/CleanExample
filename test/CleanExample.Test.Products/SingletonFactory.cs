@@ -1,10 +1,11 @@
-﻿using CleanExample.Common.MockServices.Loggers;
-using CleanExample.Common.MockServices.Time;
-using CleanExample.Core.Common.Loggers;
+﻿using CleanExample.Core.Common.Loggers;
 using CleanExample.Core.Common.Time;
 using CleanExample.Core.Products.Repositories;
 using CleanExample.Core.Products.UseCases;
-using CleanExample.Products.MockServices.Common.Repositories;
+using CleanExample.Test.Products.MockServices.Loggers;
+using CleanExample.Test.Products.MockServices.Repositories;
+using CleanExample.Test.Products.MockServices.Time;
+using CleanExample.Test.Products.TestCases;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace CleanExample.Test.Products
