@@ -1,6 +1,6 @@
 using System;
 
-namespace CleanExample.Core.Common.Time
+namespace CleanExample.Core.Common.Times
 {
     public interface ITime
     {

@@ -4,12 +4,9 @@ namespace CleanExample.Core.Common.Entities
 {
     public abstract class AbstractEntity
     {
-        public Guid Id { get; set; }
+        public Guid Id { get; protected set; } = Guid.Empty;
 
-        public DateTime CreatedAt { get; set; }
-
-        public DateTime UpdatedAt { get; set; }
-
-        public DateTime DeletedAt { get; set; }
+        protected static string CleanWhiteSpace(string value) =>
+            string.IsNullOrWhiteSpace(value) ? string.Empty : value.Trim();
     }
 }

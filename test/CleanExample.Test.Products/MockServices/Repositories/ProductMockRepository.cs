@@ -1,6 +1,6 @@
-﻿using CleanExample.Core.Products.Entities;
+﻿using System.Linq;
+using CleanExample.Core.Products.Entities;
 using CleanExample.Core.Products.Repositories;
-using System.Linq;
 
 namespace CleanExample.Test.Products.MockServices.Repositories
 {
@@ -8,7 +8,7 @@ namespace CleanExample.Test.Products.MockServices.Repositories
     {
         public Product FindByName(string name)
         {
-            return GetStore().FirstOrDefault(x => x.Name == name);
+            return Store.FirstOrDefault(x => x.Name == name);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using CleanExample.Core.Common.Exceptions;
+﻿using System;
 using CleanExample.Core.Products.Entities;
 using Xunit;
 
@@ -9,15 +9,15 @@ namespace CleanExample.Test.Products.TestCases
         [Fact]
         public void ProductNameIsEmptyTestCase()
         {
-            Assert.Throws<NameIsEmptyException>(() => new Product(string.Empty));
+            Assert.Throws<ArgumentNullException>(() => new Product(string.Empty));
         }
 
         [Fact]
         public void ProductNameTooLongTestCase()
         {
-            var veryLongName = "The Product Name is Tooooooooooooooooooooooooooooooooooooooooooooooooooooooooo Loooooooooooong";
-            Assert.Throws<NameIsTooLongException>(() => new Product(veryLongName));
+            const string veryLongName =
+                "The Product Name is Tooooooooooooooooooooooooooooooooooooooooooooooooooooooooo Loooooooooooong";
+            Assert.Throws<ArgumentException>(() => new Product(veryLongName));
         }
-
     }
 }

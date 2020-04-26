@@ -5,24 +5,13 @@ using System.Diagnostics;
 namespace CleanExample.Core.Common.ValueObjects
 {
     [DebuggerDisplay("{" + nameof(_value) + "}")]
-    public class Name : ValueObject, IEquatable<Name>, IEquatable<string>
+    public class Description : ValueObject, IEquatable<Description>, IEquatable<string>
     {
         private readonly string _value;
 
-        private Name(string value)
+        private Description(string value)
         {
-            if (string.IsNullOrEmpty(value))
-            {
-                throw new ArgumentNullException(nameof(Name));
-            }
-
-            var name = value.Trim();
-            var nameLength = name.Length;
-            const int max = 50;
-            if (nameLength > max)
-                throw new ArgumentException("Name is too long", nameof(Name));
-
-            _value = name;
+            this._value = string.IsNullOrEmpty(value) ? string.Empty : value.Trim();
         }
 
         public override string ToString()
@@ -32,21 +21,21 @@ namespace CleanExample.Core.Common.ValueObjects
 
         #region Conversion
 
-        public static implicit operator string(Name value)
+        public static implicit operator string(Description value)
         {
             return value._value;
         }
 
-        public static implicit operator Name(string value)
+        public static implicit operator Description(string value)
         {
-            return new Name(value);
+            return new Description(value);
         }
 
         #endregion
 
         #region Equality
 
-        public static bool operator ==(Name a, Name b)
+        public static bool operator ==(Description a, Description b)
         {
             if (ReferenceEquals(a, b)) return true;
             if (((object) a == null) || ((object) b == null)) return false;
@@ -54,7 +43,7 @@ namespace CleanExample.Core.Common.ValueObjects
             return a._value == b._value;
         }
 
-        public static bool operator !=(Name a, Name b) => !(a == b);
+        public static bool operator !=(Description a, Description b) => !(a == b);
 
 
         bool IEquatable<string>.Equals(string other)
@@ -62,17 +51,17 @@ namespace CleanExample.Core.Common.ValueObjects
             return other == _value;
         }
 
-        bool IEquatable<Name>.Equals(Name other)
+        bool IEquatable<Description>.Equals(Description other)
         {
             return other != null && other._value == _value;
         }
 
         public override bool Equals(object obj)
         {
-            var name = obj as Name;
-            return name != null &&
+            var description = obj as Description;
+            return description != null &&
                    base.Equals(obj) &&
-                   _value == name._value;
+                   _value == description._value;
         }
 
         public override int GetHashCode()

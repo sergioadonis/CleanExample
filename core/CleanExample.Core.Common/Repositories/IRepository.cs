@@ -1,6 +1,6 @@
-using CleanExample.Core.Common.Entities;
 using System;
 using System.Collections.Generic;
+using CleanExample.Core.Common.Entities;
 
 namespace CleanExample.Core.Common.Repositories
 {
@@ -10,7 +10,7 @@ namespace CleanExample.Core.Common.Repositories
 
         TEntity FindById(Guid id);
 
-        TEntity Create(TEntity entity);
+        bool Create(TEntity entity);
 
         bool Update(TEntity entity);
 

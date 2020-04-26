@@ -1,27 +1,27 @@
-﻿using CleanExample.Core.Common.Entities;
-using CleanExample.Core.Common.ValueObjects;
-using System;
+﻿using System;
+using CleanExample.Core.Common.Entities;
 
 namespace CleanExample.Core.Products.Entities
 {
     public class Product : AbstractEntity
     {
-        public Product(Name name, string description = "")
+        private const int MaxLength = 50;
+
+        public Product(string name, string description = null) : this(Guid.Empty, name, description)
         {
-            Id = Guid.Empty;
-            Name = name;
-            Description = description;
         }
 
-        public Product(Guid id, Name name, string description = "")
+        public Product(Guid id, string name, string description = null)
         {
             Id = id;
-            Name = name;
-            Description = description;
+            name = CleanWhiteSpace(name);
+            Name = string.IsNullOrEmpty(name) ? throw new ArgumentNullException(nameof(name)) :
+                name.Length > MaxLength ? throw new ArgumentException("Name is too long", nameof(name)) : name;
+            Description = CleanWhiteSpace(description);
         }
 
-        public Name Name { get; set; }
+        public string Name { get; private set; }
 
-        public string Description { get; set; }        
+        public string Description { get; private set; }
     }
 }

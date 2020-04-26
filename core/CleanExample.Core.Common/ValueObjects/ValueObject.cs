@@ -11,6 +11,7 @@ namespace CleanExample.Core.Common.ValueObjects
             {
                 return false;
             }
+
             return ReferenceEquals(left, null) || left.Equals(right);
         }
 
@@ -28,7 +29,7 @@ namespace CleanExample.Core.Common.ValueObjects
                 return false;
             }
 
-            ValueObject other = (ValueObject)obj;
+            ValueObject other = (ValueObject) obj;
             IEnumerator<object> thisValues = GetAtomicValues().GetEnumerator();
             IEnumerator<object> otherValues = other.GetAtomicValues().GetEnumerator();
             while (thisValues.MoveNext() && otherValues.MoveNext())
@@ -45,15 +46,17 @@ namespace CleanExample.Core.Common.ValueObjects
                     return false;
                 }
             }
+
             return !thisValues.MoveNext() && !otherValues.MoveNext();
         }
 
         public override int GetHashCode()
         {
             return GetAtomicValues()
-             .Select(x => x != null ? x.GetHashCode() : 0)
-             .Aggregate((x, y) => x ^ y);
+                .Select(x => x != null ? x.GetHashCode() : 0)
+                .Aggregate((x, y) => x ^ y);
         }
+
         // Other utility methods
     }
 }

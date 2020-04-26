@@ -1,60 +1,50 @@
-﻿using CleanExample.Core.Common.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using CleanExample.Core.Common.Entities;
 
 namespace CleanExample.Test.Products.MockServices.Repositories
 {
     public abstract class MockRepository<T> where T : AbstractEntity
     {
-        static IList<T> store;
+        protected static readonly List<T> Store = new List<T>();
 
-        protected IList<T> GetStore()
+        public bool Create(T entity)
         {
-            if (store == null)
-                store = new List<T>();
+            var exists = Store.Exists(x => x.Id == entity.Id);
+            if (exists)
+                return false;
 
-            return store;
-        }
-
-        public T Create(T entity)
-        {
-            entity.Id = System.Guid.NewGuid();
-            GetStore().Add(entity);
-            return entity;
+            Store.Add(entity);
+            return true;
         }
 
         public bool Delete(Guid id)
         {
-            var stored = GetStore().FirstOrDefault(x => x.Id == id);
-            if (stored != null)
-            {
-                return GetStore().Remove(stored);
-            }
-
-            return false;
+            var stored = Store.FirstOrDefault(x => x.Id == id);
+            return stored != null && Store.Remove(stored);
         }
 
         public bool Update(T entity)
         {
-            var stored = GetStore().FirstOrDefault(x => x.Id == entity.Id);
-            if (stored != null)
-            {
-                stored = entity;
-                return true;
-            }
+            var index = Store.FindIndex(x => x.Id == entity.Id);
+            if (index < 0)
+                return false;
 
-            return false;
+            Store.RemoveAt(index);
+            Store.Insert(index, entity);
+
+            return true;
         }
 
         public IEnumerable<T> FindAll()
         {
-            return GetStore().ToList();
+            return Store.ToList();
         }
 
         public T FindById(Guid id)
         {
-            return GetStore().FirstOrDefault(x => x.Id == id);
+            return Store.FirstOrDefault(x => x.Id == id);
         }
     }
 }
