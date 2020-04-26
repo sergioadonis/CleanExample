@@ -8,7 +8,7 @@ namespace CleanExample.Core.Products.Common
 
         TEntity FindById(TId id);
 
-        bool Create(TEntity entity);
+        bool Insert(TEntity entity);
 
         bool Update(TEntity entity);
 

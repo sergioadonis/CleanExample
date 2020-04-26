@@ -8,9 +8,9 @@ using Xunit.Abstractions;
 
 namespace CleanExample.Test.Products.Products
 {
-    public class CreateProductServiceTest
+    public class CreateProductTest
     {
-        public CreateProductServiceTest(ITestOutputHelper output)
+        public CreateProductTest(ITestOutputHelper output)
         {
             ILogger logger = new TestOutputLogger(output);
             var collection = new ServiceCollection()
@@ -30,7 +30,7 @@ namespace CleanExample.Test.Products.Products
         {
             var service = _serviceProvider.GetService<CreateProduct>();
             // var service = _factory.CreateScope().ServiceProvider.GetService<CreateProductService>();
-            var input = new CreateProduct.InputModel()
+            var input = new CreateProduct.Input()
             {
                 Name = "The Product Name2"
             };
@@ -42,7 +42,7 @@ namespace CleanExample.Test.Products.Products
         {
             var service = _serviceProvider.GetService<CreateProduct>();
             // var service = _factory.CreateScope().ServiceProvider.GetService<CreateProductService>();
-            var input = new CreateProduct.InputModel()
+            var input = new CreateProduct.Input()
             {
                 Name = "Unique Name Please"
             };

@@ -9,7 +9,13 @@ namespace CleanExample.Test.Products.Common
     {
         protected static readonly List<TEntity> Store = new List<TEntity>();
 
-        public bool Create(TEntity entity)
+        protected InMemoryRepository(IEnumerable<TEntity> initialList = null)
+        {
+            if (initialList != null)
+                Store.AddRange(initialList);
+        }
+
+        public bool Insert(TEntity entity)
         {
             var exists = Store.Exists(x => x.Id.Equals(entity.Id));
             if (exists)

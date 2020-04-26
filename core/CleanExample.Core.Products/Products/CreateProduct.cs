@@ -3,11 +3,11 @@ using CleanExample.Core.Products.Common;
 
 namespace CleanExample.Core.Products.Products
 {
-    public class CreateProduct : IService<CreateProduct.InputModel, CreateProduct.OutputModel>
+    public class CreateProduct : IService<CreateProduct.Input, CreateProduct.Output>
     {
-        #region Handler
+        #region Invoke handler
 
-        public OutputModel Invoke(InputModel input)
+        public Output Invoke(Input input)
         {
             _logger.Log($"Starting {GetType().FullName}");
             _logger.Log("Input model received: ", input, LogType.Debug);
@@ -25,7 +25,7 @@ namespace CleanExample.Core.Products.Products
 
             // Initializing
             var product = new Product(Guid.NewGuid(), input.Name, input.Description);
-            var created = _repository.Create(product);
+            var created = _repository.Insert(product);
 
             var message = created
                 ? $"Product with id {product.Id} was created successfully by _repository type: {_repository.GetType()}!"
@@ -33,7 +33,7 @@ namespace CleanExample.Core.Products.Products
             _logger.Log(message);
 
             // To return
-            var output = new OutputModel
+            var output = new Output
             {
                 Id = created ? product.Id : Guid.Empty
             };
@@ -45,6 +45,7 @@ namespace CleanExample.Core.Products.Products
         }
 
         #endregion
+
 
         #region Injectables
 
@@ -62,13 +63,13 @@ namespace CleanExample.Core.Products.Products
 
         #region Input/Output models
 
-        public class InputModel
+        public class Input
         {
             public string Name { get; set; }
             public string Description { get; set; }
         }
 
-        public class OutputModel
+        public class Output
         {
             public Guid Id { get; set; }
             public bool Created => (Id != Guid.Empty);
