@@ -1,10 +1,11 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using CleanExample.Core.Products.Products;
-using CleanExample.Test.Products.Common.Repositories;
+using CleanExample.Test.Products.Common;
 
 namespace CleanExample.Test.Products.Products
 {
-    public class InMemoryProductRepository : InMemoryRepository<Product>, IProductRepository
+    public class InMemoryProductRepository : InMemoryRepository<Product, Guid>, IProductRepository
     {
         public Product FindByName(string name)
         {

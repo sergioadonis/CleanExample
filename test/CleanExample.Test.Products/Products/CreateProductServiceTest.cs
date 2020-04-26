@@ -19,14 +19,14 @@ namespace CleanExample.Test.Products.Products
                 .AddScoped<CreateProduct>();
 
             _serviceProvider = collection.BuildServiceProvider();
-            _factory = _serviceProvider.GetRequiredService<IServiceScopeFactory>();
+            // _factory = _serviceProvider.GetRequiredService<IServiceScopeFactory>();
         }
 
         private readonly IServiceProvider _serviceProvider;
-        private readonly IServiceScopeFactory _factory;
+        // private readonly IServiceScopeFactory _factory;
 
         [Fact]
-        public void IsValidTestCase()
+        public void CreatedTestCase()
         {
             var service = _serviceProvider.GetService<CreateProduct>();
             // var service = _factory.CreateScope().ServiceProvider.GetService<CreateProductService>();

@@ -1,18 +1,17 @@
-using System;
 using System.Collections.Generic;
 
 namespace CleanExample.Core.Products.Common
 {
-    public interface IRepository<TEntity> where TEntity : AbstractEntity
+    public interface IRepository<TEntity, in TId> where TEntity : Identifiable<TId>
     {
         IEnumerable<TEntity> FindAll();
 
-        TEntity FindById(Guid id);
+        TEntity FindById(TId id);
 
         bool Create(TEntity entity);
 
         bool Update(TEntity entity);
 
-        bool Delete(Guid id);
+        bool Delete(TId id);
     }
 }

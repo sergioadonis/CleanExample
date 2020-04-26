@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using CleanExample.Core.Products.Common;
 
-namespace CleanExample.Test.Products.Common.Repositories
+namespace CleanExample.Test.Products.Common
 {
-    public abstract class InMemoryRepository<T> where T : AbstractEntity
+    public abstract class InMemoryRepository<TEntity, TId> where TEntity : Identifiable<TId>
     {
-        protected static readonly List<T> Store = new List<T>();
+        protected static readonly List<TEntity> Store = new List<TEntity>();
 
-        public bool Create(T entity)
+        public bool Create(TEntity entity)
         {
-            var exists = Store.Exists(x => x.Id == entity.Id);
+            var exists = Store.Exists(x => x.Id.Equals(entity.Id));
             if (exists)
                 return false;
 
@@ -21,13 +21,13 @@ namespace CleanExample.Test.Products.Common.Repositories
 
         public bool Delete(Guid id)
         {
-            var stored = Store.FirstOrDefault(x => x.Id == id);
+            var stored = Store.FirstOrDefault(x => x.Id.Equals(id));
             return stored != null && Store.Remove(stored);
         }
 
-        public bool Update(T entity)
+        public bool Update(TEntity entity)
         {
-            var index = Store.FindIndex(x => x.Id == entity.Id);
+            var index = Store.FindIndex(x => x.Id.Equals(entity.Id));
             if (index < 0)
                 return false;
 
@@ -37,14 +37,14 @@ namespace CleanExample.Test.Products.Common.Repositories
             return true;
         }
 
-        public IEnumerable<T> FindAll()
+        public IEnumerable<TEntity> FindAll()
         {
             return Store.ToList();
         }
 
-        public T FindById(Guid id)
+        public TEntity FindById(Guid id)
         {
-            return Store.FirstOrDefault(x => x.Id == id);
+            return Store.FirstOrDefault(x => x.Id.Equals(id));
         }
     }
 }

@@ -5,7 +5,7 @@ using System.Diagnostics;
 namespace CleanExample.Core.Products.Common
 {
     [DebuggerDisplay("{" + nameof(_value) + "}")]
-    public class Name : AbstractValueObject, IEquatable<Name>, IEquatable<string>
+    public class Name : ValueObject, IEquatable<Name>, IEquatable<string>
     {
         private readonly string _value;
 

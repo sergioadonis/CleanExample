@@ -3,9 +3,9 @@ using System.Linq;
 
 namespace CleanExample.Core.Products.Common
 {
-    public abstract class AbstractValueObject
+    public abstract class ValueObject
     {
-        protected static bool EqualOperator(AbstractValueObject left, AbstractValueObject right)
+        protected static bool EqualOperator(ValueObject left, ValueObject right)
         {
             if (ReferenceEquals(left, null) ^ ReferenceEquals(right, null))
             {
@@ -15,7 +15,7 @@ namespace CleanExample.Core.Products.Common
             return ReferenceEquals(left, null) || left.Equals(right);
         }
 
-        protected static bool NotEqualOperator(AbstractValueObject left, AbstractValueObject right)
+        protected static bool NotEqualOperator(ValueObject left, ValueObject right)
         {
             return !(EqualOperator(left, right));
         }
@@ -29,7 +29,7 @@ namespace CleanExample.Core.Products.Common
                 return false;
             }
 
-            AbstractValueObject other = (AbstractValueObject) obj;
+            ValueObject other = (ValueObject) obj;
             IEnumerator<object> thisValues = GetAtomicValues().GetEnumerator();
             IEnumerator<object> otherValues = other.GetAtomicValues().GetEnumerator();
             while (thisValues.MoveNext() && otherValues.MoveNext())
