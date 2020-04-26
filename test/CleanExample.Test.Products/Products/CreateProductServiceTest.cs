@@ -1,39 +1,36 @@
 ﻿using System;
-using CleanExample.Core.Common.Loggers;
-using CleanExample.Core.Products.Exceptions;
-using CleanExample.Core.Products.Repositories;
-using CleanExample.Core.Products.Services;
-using CleanExample.Test.Products.MockServices.Loggers;
-using CleanExample.Test.Products.MockServices.Repositories;
+using CleanExample.Core.Products.Common;
+using CleanExample.Core.Products.Products;
+using CleanExample.Test.Products.Common;
 using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace CleanExample.Test.Products.TestCases
+namespace CleanExample.Test.Products.Products
 {
     public class CreateProductServiceTest
     {
-        private readonly IServiceProvider _serviceProvider;
-        private readonly IServiceScopeFactory _factory;
-
         public CreateProductServiceTest(ITestOutputHelper output)
         {
             ILogger logger = new TestOutputLogger(output);
             var collection = new ServiceCollection()
                 .AddScoped(sp => logger)
-                .AddScoped<IProductRepository, ProductMockRepository>()
-                .AddScoped<CreateProductService>();
+                .AddScoped<IProductRepository, InMemoryProductRepository>()
+                .AddScoped<CreateProduct>();
 
             _serviceProvider = collection.BuildServiceProvider();
             _factory = _serviceProvider.GetRequiredService<IServiceScopeFactory>();
         }
 
+        private readonly IServiceProvider _serviceProvider;
+        private readonly IServiceScopeFactory _factory;
+
         [Fact]
         public void IsValidTestCase()
         {
-            var service = _serviceProvider.GetService<CreateProductService>();
+            var service = _serviceProvider.GetService<CreateProduct>();
             // var service = _factory.CreateScope().ServiceProvider.GetService<CreateProductService>();
-            var input = new CreateProductService.InputModel()
+            var input = new CreateProduct.InputModel()
             {
                 Name = "The Product Name2"
             };
@@ -43,9 +40,9 @@ namespace CleanExample.Test.Products.TestCases
         [Fact]
         public void ProductNameAlreadyExistsTestCase()
         {
-            var service = _serviceProvider.GetService<CreateProductService>();
+            var service = _serviceProvider.GetService<CreateProduct>();
             // var service = _factory.CreateScope().ServiceProvider.GetService<CreateProductService>();
-            var input = new CreateProductService.InputModel()
+            var input = new CreateProduct.InputModel()
             {
                 Name = "Unique Name Please"
             };
@@ -54,7 +51,7 @@ namespace CleanExample.Test.Products.TestCases
             if (output.Created)
             {
                 // Create product again to get exception
-                Assert.Throws<ProductNameAlreadyExistsException>(() => service.Invoke(input));
+                Assert.Throws<ProductNameAlreadyExists>(() => service.Invoke(input));
             }
         }
     }

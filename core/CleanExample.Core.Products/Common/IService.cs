@@ -1,4 +1,4 @@
-﻿namespace CleanExample.Core.Common.Services
+﻿namespace CleanExample.Core.Products.Common
 {
     public interface IService<in TInputModel, out TOutputModel>
     {

@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 
-namespace CleanExample.Core.Common.ValueObjects
+namespace CleanExample.Core.Products.Common
 {
     [DebuggerDisplay("{" + nameof(_value) + "}")]
-    public class Description : ValueObject, IEquatable<Description>, IEquatable<string>
+    public class Description : AbstractValueObject, IEquatable<Description>, IEquatable<string>
     {
         private readonly string _value;
 

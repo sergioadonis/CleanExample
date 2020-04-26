@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace CleanExample.Core.Common.ValueObjects
+namespace CleanExample.Core.Products.Common
 {
-    public abstract class ValueObject
+    public abstract class AbstractValueObject
     {
-        protected static bool EqualOperator(ValueObject left, ValueObject right)
+        protected static bool EqualOperator(AbstractValueObject left, AbstractValueObject right)
         {
             if (ReferenceEquals(left, null) ^ ReferenceEquals(right, null))
             {
@@ -15,7 +15,7 @@ namespace CleanExample.Core.Common.ValueObjects
             return ReferenceEquals(left, null) || left.Equals(right);
         }
 
-        protected static bool NotEqualOperator(ValueObject left, ValueObject right)
+        protected static bool NotEqualOperator(AbstractValueObject left, AbstractValueObject right)
         {
             return !(EqualOperator(left, right));
         }
@@ -29,7 +29,7 @@ namespace CleanExample.Core.Common.ValueObjects
                 return false;
             }
 
-            ValueObject other = (ValueObject) obj;
+            AbstractValueObject other = (AbstractValueObject) obj;
             IEnumerator<object> thisValues = GetAtomicValues().GetEnumerator();
             IEnumerator<object> otherValues = other.GetAtomicValues().GetEnumerator();
             while (thisValues.MoveNext() && otherValues.MoveNext())

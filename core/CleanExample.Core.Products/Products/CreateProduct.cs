@@ -1,45 +1,10 @@
 ﻿using System;
-using CleanExample.Core.Common.Loggers;
-using CleanExample.Core.Common.Services;
-using CleanExample.Core.Products.Entities;
-using CleanExample.Core.Products.Exceptions;
-using CleanExample.Core.Products.Repositories;
+using CleanExample.Core.Products.Common;
 
-namespace CleanExample.Core.Products.Services
+namespace CleanExample.Core.Products.Products
 {
-    public class CreateProductService : IService<CreateProductService.InputModel, CreateProductService.OutputModel>
+    public class CreateProduct : IService<CreateProduct.InputModel, CreateProduct.OutputModel>
     {
-        #region Injectables
-
-        private readonly IProductRepository _repository;
-        private readonly ILogger _logger;
-
-        public CreateProductService(IProductRepository productRepository, ILogger logger)
-        {
-            _repository = productRepository;
-            _logger = logger;
-        }
-
-        #endregion
-
-
-        #region Input/Output models
-
-        public class InputModel
-        {
-            public string Name { get; set; }
-            public string Description { get; set; }
-        }
-
-        public class OutputModel
-        {
-            public Guid Id { get; set; }
-            public bool Created => (Id != Guid.Empty);
-        }
-
-        #endregion
-
-
         #region Handler
 
         public OutputModel Invoke(InputModel input)
@@ -52,7 +17,7 @@ namespace CleanExample.Core.Products.Services
             // Validations
             var exists = _repository.FindByName(input.Name);
             if (exists != null)
-                throw new ProductNameAlreadyExistsException(input.Name);
+                throw new ProductNameAlreadyExists(input.Name);
 
             #endregion
 
@@ -77,6 +42,36 @@ namespace CleanExample.Core.Products.Services
             return output;
 
             #endregion
+        }
+
+        #endregion
+
+        #region Injectables
+
+        private readonly IProductRepository _repository;
+        private readonly ILogger _logger;
+
+        public CreateProduct(IProductRepository productRepository, ILogger logger)
+        {
+            _repository = productRepository;
+            _logger = logger;
+        }
+
+        #endregion
+
+
+        #region Input/Output models
+
+        public class InputModel
+        {
+            public string Name { get; set; }
+            public string Description { get; set; }
+        }
+
+        public class OutputModel
+        {
+            public Guid Id { get; set; }
+            public bool Created => (Id != Guid.Empty);
         }
 
         #endregion

@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using CleanExample.Core.Common.Entities;
+using CleanExample.Core.Products.Common;
 
-namespace CleanExample.Test.Products.MockServices.Repositories
+namespace CleanExample.Test.Products.Common.Repositories
 {
-    public abstract class MockRepository<T> where T : AbstractEntity
+    public abstract class InMemoryRepository<T> where T : AbstractEntity
     {
         protected static readonly List<T> Store = new List<T>();
 

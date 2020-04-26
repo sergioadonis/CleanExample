@@ -1,6 +1,6 @@
 using System;
 
-namespace CleanExample.Core.Common.Entities
+namespace CleanExample.Core.Products.Common
 {
     public abstract class AbstractEntity
     {

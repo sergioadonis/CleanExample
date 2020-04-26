@@ -1,8 +1,7 @@
 using System;
 using System.Collections.Generic;
-using CleanExample.Core.Common.Entities;
 
-namespace CleanExample.Core.Common.Repositories
+namespace CleanExample.Core.Products.Common
 {
     public interface IRepository<TEntity> where TEntity : AbstractEntity
     {

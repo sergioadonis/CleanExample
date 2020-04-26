@@ -1,8 +1,8 @@
 ﻿using System;
-using CleanExample.Core.Products.Entities;
+using CleanExample.Core.Products.Products;
 using Xunit;
 
-namespace CleanExample.Test.Products.TestCases
+namespace CleanExample.Test.Products.Products
 {
     public class ProductTest
     {

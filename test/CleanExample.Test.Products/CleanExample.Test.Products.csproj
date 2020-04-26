@@ -17,7 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\core\CleanExample.Core.Common\CleanExample.Core.Common.csproj" />
     <ProjectReference Include="..\..\core\CleanExample.Core.Products\CleanExample.Core.Products.csproj" />
   </ItemGroup>
 

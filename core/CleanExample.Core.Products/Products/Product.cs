@@ -1,7 +1,7 @@
 ﻿using System;
-using CleanExample.Core.Common.Entities;
+using CleanExample.Core.Products.Common;
 
-namespace CleanExample.Core.Products.Entities
+namespace CleanExample.Core.Products.Products
 {
     public class Product : AbstractEntity
     {

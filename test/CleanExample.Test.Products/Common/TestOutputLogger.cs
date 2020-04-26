@@ -1,8 +1,8 @@
 using System.Text.Json;
-using CleanExample.Core.Common.Loggers;
+using CleanExample.Core.Products.Common;
 using Xunit.Abstractions;
 
-namespace CleanExample.Test.Products.MockServices.Loggers
+namespace CleanExample.Test.Products.Common
 {
     public class TestOutputLogger : ILogger
     {
@@ -11,12 +11,6 @@ namespace CleanExample.Test.Products.MockServices.Loggers
         public TestOutputLogger(ITestOutputHelper testOutputHelper)
         {
             _outputHelper = testOutputHelper;
-        }
-
-        private void WriteText(string text)
-        {
-            // TODO: Check if Console, EventLog, File or Database is able
-            _outputHelper.WriteLine(text);
         }
 
         public void Log(string message, object data = null, LogType type = LogType.Info)
@@ -28,6 +22,12 @@ namespace CleanExample.Test.Products.MockServices.Loggers
                 text = $"{text} {JsonSerializer.Serialize(data, new JsonSerializerOptions() {WriteIndented = true})}";
 
             WriteText(text);
+        }
+
+        private void WriteText(string text)
+        {
+            // TODO: Check if Console, EventLog, File or Database is able
+            _outputHelper.WriteLine(text);
         }
     }
 }
