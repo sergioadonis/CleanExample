@@ -1,8 +1,9 @@
+using System;
 using System.Collections.Generic;
 
 namespace CleanExample.Core.Products.Common
 {
-    public interface IRepository<TEntity, in TId> where TEntity : Identifiable<TId>
+    public interface IRepository<TEntity, in TId> where TEntity : Identifiable<TId> where TId : IEquatable<TId>
     {
         IEnumerable<TEntity> FindAll();
 

@@ -5,7 +5,7 @@ using CleanExample.Core.Products.Common;
 
 namespace CleanExample.Test.Products.Common
 {
-    public abstract class InMemoryRepository<TEntity, TId> where TEntity : Identifiable<TId>
+    public abstract class InMemoryRepository<TEntity, TId> where TEntity : Identifiable<TId> where TId : IEquatable<TId>
     {
         protected static readonly List<TEntity> Store = new List<TEntity>();
 
