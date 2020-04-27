@@ -26,11 +26,11 @@ namespace CleanExample.Test.Products.Products
         // private readonly IServiceScopeFactory _factory;
 
         [Fact]
-        public void CreatedTestCase()
+        public void ProductCreatedTestCase()
         {
             var service = _serviceProvider.GetService<CreateProduct>();
             // var service = _factory.CreateScope().ServiceProvider.GetService<CreateProductService>();
-            var input = new CreateProduct.Input()
+            var input = new CreateProduct.Input
             {
                 Name = "The Product Name2"
             };
@@ -42,7 +42,7 @@ namespace CleanExample.Test.Products.Products
         {
             var service = _serviceProvider.GetService<CreateProduct>();
             // var service = _factory.CreateScope().ServiceProvider.GetService<CreateProductService>();
-            var input = new CreateProduct.Input()
+            var input = new CreateProduct.Input
             {
                 Name = "Unique Name Please"
             };

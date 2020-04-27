@@ -7,13 +7,20 @@ namespace CleanExample.Test.Products.Products
     public class ProductTest
     {
         [Fact]
-        public void ProductNameIsEmptyTestCase()
+        public void ProductDescriptionNotNull()
+        {
+            var product = new Product("A Valid Name", null);
+            Assert.NotNull(product.Description);
+        }
+
+        [Fact]
+        public void ProductNameIsEmpty()
         {
             Assert.Throws<ArgumentNullException>(() => new Product(string.Empty));
         }
 
         [Fact]
-        public void ProductNameTooLongTestCase()
+        public void ProductNameTooLong()
         {
             const string veryLongName =
                 "The Product Name is Tooooooooooooooooooooooooooooooooooooooooooooooooooooooooo Loooooooooooong";

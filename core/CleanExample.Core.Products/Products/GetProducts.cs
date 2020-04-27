@@ -14,7 +14,7 @@ namespace CleanExample.Core.Products.Products
 
             var products = _productRepository.FindAll();
 
-            var output = new Output()
+            var output = new Output
             {
                 Products = products
             };

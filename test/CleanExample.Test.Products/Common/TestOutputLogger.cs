@@ -19,7 +19,7 @@ namespace CleanExample.Test.Products.Common
             var text = $"{type} {message}";
 
             if (data != null)
-                text = $"{text} {JsonSerializer.Serialize(data, new JsonSerializerOptions() {WriteIndented = true})}";
+                text = $"{text} {JsonSerializer.Serialize(data, new JsonSerializerOptions {WriteIndented = true})}";
 
             WriteText(text);
         }
