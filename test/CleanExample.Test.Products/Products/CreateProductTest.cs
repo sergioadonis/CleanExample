@@ -23,36 +23,40 @@ namespace CleanExample.Test.Products.Products
         }
 
         private readonly IServiceProvider _serviceProvider;
-        // private readonly IServiceScopeFactory _factory;
 
         [Fact]
-        public void ProductCreatedTestCase()
+        public void ProductAlreadyExists()
         {
             var service = _serviceProvider.GetService<CreateProduct>();
             // var service = _factory.CreateScope().ServiceProvider.GetService<CreateProductService>();
-            var input = new CreateProduct.Input
+            var input = new ProductDto()
             {
-                Name = "The Product Name2"
-            };
-            Assert.True(service.Invoke(input).Created);
-        }
-
-        [Fact]
-        public void ProductNameAlreadyExistsTestCase()
-        {
-            var service = _serviceProvider.GetService<CreateProduct>();
-            // var service = _factory.CreateScope().ServiceProvider.GetService<CreateProductService>();
-            var input = new CreateProduct.Input
-            {
-                Name = "Unique Name Please"
+                BusinessAlias = "TEST",
+                ProductCode = "01",
+                ProductName = "Unique Name Please"
             };
 
             var output = service.Invoke(input);
-            if (output.Created)
+            if (output)
             {
                 // Create product again to get exception
-                Assert.Throws<ProductNameAlreadyExists>(() => service.Invoke(input));
+                Assert.Throws<ProductAlreadyExists>(() => service.Invoke(input));
             }
+        }
+        // private readonly IServiceScopeFactory _factory;
+
+        [Fact]
+        public void ProductCreated()
+        {
+            var service = _serviceProvider.GetService<CreateProduct>();
+            // var service = _factory.CreateScope().ServiceProvider.GetService<CreateProductService>();
+            var input = new ProductDto()
+            {
+                BusinessAlias = "TEST",
+                ProductCode = "01",
+                ProductName = "The Product Name2"
+            };
+            Assert.True(service.Invoke(input));
         }
     }
 }

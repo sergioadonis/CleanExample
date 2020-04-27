@@ -1,45 +1,41 @@
-﻿using System;
-using CleanExample.Core.Products.Common;
+﻿using CleanExample.Core.Products.Common;
 
 namespace CleanExample.Core.Products.Products
 {
-    public class CreateProduct : IService<CreateProduct.Input, CreateProduct.Output>
+    public class CreateProduct : IService<ProductDto, bool>
     {
         #region Invoke handler
 
-        public Output Invoke(Input input)
+        public bool Invoke(ProductDto input)
         {
             _logger.Log($"Starting {GetType().FullName}");
             _logger.Log("Input model received: ", input, LogType.Debug);
 
             #region Business rules example
 
+            var product = input.ToProduct();
+
             // Validations
-            var exists = _repository.FindByName(input.Name);
+            var exists = _repository.FindByCodeOrName(product.Id.BusinessId, product.Id.Code, product.Name);
             if (exists != null)
-                throw new ProductNameAlreadyExists(input.Name);
+            {
+                var error = new ProductAlreadyExists(product);
+                _logger.Log(error.Message, product, LogType.Error);
+                throw error;
+            }
 
             #endregion
 
             #region Persistence
 
-            // Initializing
-            var product = new Product(Guid.NewGuid(), input.Name, input.Description);
             var created = _repository.Insert(product);
 
             var message = created
-                ? $"Product with id {product.Id} was created successfully by _repository type: {_repository.GetType()}!"
+                ? $"Product with Code {product.Id.Code} was created successfully by _repository type: {_repository.GetType()}!"
                 : $"Product wasn't created... The function _repository.Create(product) returned false. _repository type: {_repository.GetType()}.";
             _logger.Log(message);
-
-            // To return
-            var output = new Output
-            {
-                Id = created ? product.Id : Guid.Empty
-            };
-
-            _logger.Log("Output model to return: ", output, LogType.Debug);
-            return output;
+            _logger.Log("Output model to return: ", created, LogType.Debug);
+            return created;
 
             #endregion
         }
@@ -56,23 +52,6 @@ namespace CleanExample.Core.Products.Products
         {
             _repository = productRepository;
             _logger = logger;
-        }
-
-        #endregion
-
-
-        #region Input/Output models
-
-        public class Input
-        {
-            public string Name { get; set; }
-            public string Description { get; set; }
-        }
-
-        public class Output
-        {
-            public Guid Id { get; set; }
-            public bool Created => (Id != Guid.Empty);
         }
 
         #endregion

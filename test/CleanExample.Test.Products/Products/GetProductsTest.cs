@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using CleanExample.Core.Products.Business;
 using CleanExample.Core.Products.Common;
 using CleanExample.Core.Products.Products;
 using CleanExample.Test.Products.Common;
@@ -14,7 +14,16 @@ namespace CleanExample.Test.Products.Products
         public GetProductsTest(ITestOutputHelper output)
         {
             ILogger logger = new TestOutputLogger(output);
-            IProductRepository repository = new InMemoryProductRepository(_products);
+
+            var businessId = new BusinessId("TEST");
+            var products = new List<Product>
+            {
+                new Product(businessId, "01", "Product One"),
+                new Product(businessId, "02", "Product Two"),
+                new Product(businessId, "03", "Product Three", "With description")
+            };
+
+            IProductRepository repository = new InMemoryProductRepository(products);
 
             var collection = new ServiceCollection()
                 .AddScoped(sp => logger)
@@ -27,20 +36,12 @@ namespace CleanExample.Test.Products.Products
 
         private readonly ServiceProvider _serviceProvider;
 
-        private readonly List<Product> _products = new List<Product>
-        {
-            new Product(Guid.NewGuid(), "Product One"),
-            new Product(Guid.NewGuid(), "Product Two"),
-            new Product(Guid.NewGuid(), "Product Three", "With description")
-        };
-
         [Fact]
         public void ProductsIsNotEmpty()
         {
             var service = _serviceProvider.GetService<GetProducts>();
             var output = service.Invoke();
-            // Assert.Equal(_products, output.Products);
-            Assert.NotEmpty(output.Products);
+            Assert.NotEmpty(output);
         }
     }
 }

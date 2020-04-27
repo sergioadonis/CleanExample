@@ -6,7 +6,7 @@ namespace CleanExample.Core.Products.Common
     {
         protected Identifiable(TId id)
         {
-            Id = id;
+            Id = id ?? throw new ArgumentNullException(nameof(id));
         }
 
         public TId Id { get; }

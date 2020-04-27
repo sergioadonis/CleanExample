@@ -7,7 +7,7 @@ namespace CleanExample.Test.Products.Common
 {
     public abstract class InMemoryRepository<TEntity, TId> where TEntity : Identifiable<TId> where TId : IEquatable<TId>
     {
-        protected static readonly List<TEntity> Store = new List<TEntity>();
+        protected readonly List<TEntity> Store = new List<TEntity>();
 
         protected InMemoryRepository(IEnumerable<TEntity> initialList = null)
         {
@@ -25,7 +25,7 @@ namespace CleanExample.Test.Products.Common
             return true;
         }
 
-        public bool Delete(Guid id)
+        public bool Delete(TId id)
         {
             var stored = Store.FirstOrDefault(x => x.Id.Equals(id));
             return stored != null && Store.Remove(stored);
@@ -48,7 +48,7 @@ namespace CleanExample.Test.Products.Common
             return Store.ToList();
         }
 
-        public TEntity FindById(Guid id)
+        public TEntity FindById(TId id)
         {
             return Store.FirstOrDefault(x => x.Id.Equals(id));
         }

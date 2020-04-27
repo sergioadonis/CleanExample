@@ -1,10 +1,10 @@
-using System;
+using CleanExample.Core.Products.Business;
 using CleanExample.Core.Products.Common;
 
 namespace CleanExample.Core.Products.Products
 {
-    public interface IProductRepository : IRepository<Product, Guid>
+    public interface IProductRepository : IRepository<Product, ProductId>
     {
-        Product FindByName(string name);
+        Product FindByCodeOrName(BusinessId businessId, string productCode, string productName);
     }
 }
