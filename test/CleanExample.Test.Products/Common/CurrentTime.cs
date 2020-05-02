@@ -1,5 +1,5 @@
 using System;
-using CleanExample.Core.Products.Common;
+using CleanExample.Core.Products.Contracts;
 
 namespace CleanExample.Test.Products.Common
 {

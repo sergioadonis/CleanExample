@@ -1,4 +1,4 @@
-namespace CleanExample.Core.Products.Common
+namespace CleanExample.Core.Products.Contracts
 {
     public interface ILogger
     {

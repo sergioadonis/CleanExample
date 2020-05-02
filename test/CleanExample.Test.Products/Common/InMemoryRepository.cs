@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using CleanExample.Core.Products.Common;
+using CleanExample.Core.Products.Entities;
 
 namespace CleanExample.Test.Products.Common
 {
-    public abstract class InMemoryRepository<TEntity, TId> where TEntity : Identifiable<TId> where TId : IEquatable<TId>
+    public abstract class InMemoryRepository<TEntity, TKey> where TEntity : Entity<TKey> where TKey : IEquatable<TKey>
     {
         protected readonly List<TEntity> Store = new List<TEntity>();
 
@@ -17,7 +17,7 @@ namespace CleanExample.Test.Products.Common
 
         public bool Insert(TEntity entity)
         {
-            var exists = Store.Exists(x => x.Id.Equals(entity.Id));
+            var exists = Store.Exists(x => x.Key.Equals(entity.Key));
             if (exists)
                 return false;
 
@@ -25,15 +25,15 @@ namespace CleanExample.Test.Products.Common
             return true;
         }
 
-        public bool Delete(TId id)
+        public bool Delete(TKey key)
         {
-            var stored = Store.FirstOrDefault(x => x.Id.Equals(id));
+            var stored = Store.FirstOrDefault(x => x.Key.Equals(key));
             return stored != null && Store.Remove(stored);
         }
 
         public bool Update(TEntity entity)
         {
-            var index = Store.FindIndex(x => x.Id.Equals(entity.Id));
+            var index = Store.FindIndex(x => x.Key.Equals(entity.Key));
             if (index < 0)
                 return false;
 
@@ -43,14 +43,14 @@ namespace CleanExample.Test.Products.Common
             return true;
         }
 
-        public IEnumerable<TEntity> FindAll()
+        public IEnumerable<TEntity> Find()
         {
             return Store.ToList();
         }
 
-        public TEntity FindById(TId id)
+        public TEntity Find(TKey key)
         {
-            return Store.FirstOrDefault(x => x.Id.Equals(id));
+            return Store.FirstOrDefault(x => x.Key.Equals(key));
         }
     }
 }

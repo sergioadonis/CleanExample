@@ -1,5 +1,5 @@
 using System.Text.Json;
-using CleanExample.Core.Products.Common;
+using CleanExample.Core.Products.Contracts;
 using Xunit.Abstractions;
 
 namespace CleanExample.Test.Products.Common

@@ -1,13 +1,13 @@
 ﻿using System;
+using CleanExample.Core.Products.Entities;
 
-namespace CleanExample.Core.Products.Products
+namespace CleanExample.Core.Products.Exceptions
 {
     public sealed class ProductAlreadyExists : Exception
     {
         public ProductAlreadyExists(Product product) : base("This product already exists")
         {
-            Data.Add("BusinessAlias", product.Id.BusinessId.Alias);
-            Data.Add("ProductCode", product.Id.Code);
+            Data.Add("Code", product.Code);
             Data.Add("ProductName", product.Name);
         }
     }
