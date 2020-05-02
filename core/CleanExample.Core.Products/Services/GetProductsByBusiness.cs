@@ -3,6 +3,7 @@ using System.Linq;
 using CleanExample.Core.Products.Contracts;
 using CleanExample.Core.Products.Dto;
 using CleanExample.Core.Products.Exceptions;
+using CleanExample.Core.Products.Mappers;
 
 namespace CleanExample.Core.Products.Services
 {
@@ -15,7 +16,7 @@ namespace CleanExample.Core.Products.Services
             _logger.Log($"Starting {GetType().FullName}");
             _logger.Log("Input model received: ", input, LogType.Debug);
 
-            var businessKey = input.ToBusinessKey();
+            var businessKey = BusinessMapper.ToBusinessKey(input);
             var business = _businessRepository.Find(businessKey);
             if (business == null)
             {

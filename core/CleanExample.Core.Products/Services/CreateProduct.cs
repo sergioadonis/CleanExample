@@ -1,6 +1,7 @@
 ﻿using CleanExample.Core.Products.Contracts;
 using CleanExample.Core.Products.Dto;
 using CleanExample.Core.Products.Exceptions;
+using CleanExample.Core.Products.Mappers;
 
 namespace CleanExample.Core.Products.Services
 {
@@ -15,7 +16,7 @@ namespace CleanExample.Core.Products.Services
 
             #region Business rules example
 
-            var product = input.ToProduct();
+            var product = ProductMapper.ToProduct(input);
             var business = _businessRepository.Find(product.BusinessKey);
             if (business == null)
             {

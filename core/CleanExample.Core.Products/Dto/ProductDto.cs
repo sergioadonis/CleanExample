@@ -1,6 +1,4 @@
-﻿using CleanExample.Core.Products.Entities;
-
-namespace CleanExample.Core.Products.Dto
+﻿namespace CleanExample.Core.Products.Dto
 {
     public sealed class ProductDto
     {
@@ -8,8 +6,5 @@ namespace CleanExample.Core.Products.Dto
         public string ProductCode { get; set; }
         public string ProductName { get; set; }
         public string ProductDescription { get; set; }
-
-        public Product ToProduct() =>
-            new Product(ProductCode, BusinessCode, ProductName, ProductDescription);
     }
 }
