@@ -16,21 +16,19 @@ namespace CleanExample.Core.Products.Entities
             Description = description ?? string.Empty;
         }
 
-        public Product(string productCode, string businessCode, string name, string description = null) : this(
-            new ProductKey(productCode, new BusinessKey(businessCode)), name, description)
+        public Product(string productCode, BusinessKey businessKey, string name, string description = null) : this(
+            new ProductKey(productCode, businessKey), name, description)
         {
         }
 
-        public Product(string productCode, BusinessKey businessKey, string name, string description = null) : this(
-            new ProductKey(productCode, businessKey), name, description)
+        public Product(string productCode, Business business, string name, string description = null) : this(
+            new ProductKey(productCode, business.Key), name, description)
         {
         }
 
         public string Code => Key.Code;
 
         public BusinessKey BusinessKey => Key.BusinessKey;
-
-        public string BusinessCode => BusinessKey.Code;
 
         public string Name { get; }
 

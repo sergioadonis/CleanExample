@@ -18,15 +18,12 @@ namespace CleanExample.Test.Products.Services
         {
             ILogger logger = new TestOutputLogger(output);
 
-            var business = new List<Business>()
-            {
-                new Business("B1", "My Business")
-            };
-            IBusinessRepository businessRepository = new InMemoryBusinessRepository(business);
+            var business = new Business("B1", "My Business");
+            IBusinessRepository businessRepository = new InMemoryBusinessRepository(new List<Business>() {business});
 
             var products = new List<Product>
             {
-                new Product("P01", "B1", "My Product")
+                new Product("P01", business.Key, "My Product")
             };
             IProductRepository productRepository = new InMemoryProductRepository(products);
 

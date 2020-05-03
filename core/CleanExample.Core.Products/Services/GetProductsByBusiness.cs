@@ -29,7 +29,7 @@ namespace CleanExample.Core.Products.Services
 
             var output = new List<ProductDto>(products.Select(product => new ProductDto()
             {
-                BusinessCode = product.BusinessCode,
+                BusinessCode = business.Code,
                 ProductCode = product.Code,
                 ProductName = product.Name,
                 ProductDescription = product.Description
